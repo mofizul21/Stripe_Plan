@@ -9,7 +9,7 @@ if (isset($_POST['register'])) {
     $phone_number = trim($_POST['phone_number']);
 
     $result = $connection->insert('users', [
-        'subscription_id'       =>  1,
+        'subscription_id'       =>  0,
         'first_name'            =>  $first_name,
         'last_name'             =>  $last_name,
         'email'                 =>  $email,

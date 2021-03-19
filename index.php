@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success btn-block" id="payBtn">Submit Payment</button>
+                            <button type="submit" class="btn btn-success btn-block" id="payBtn" onclick="change_text()">Submit Payment</button>
                         </form>
                     <?php } else { ?>
                         <div class="alert alert-warning" role="alert">
@@ -77,14 +77,23 @@
                         <th>Brand</th>
                         <th>CVC</th>
                         <th>Date</th>
+                        <th>Copy</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>4242424242424242</td>
+                        <td><input type="text" value="4242424242424242" id="myInput"></td>
                         <td>Visa</td>
                         <td>Any 3 digits</td>
                         <td>Any future date</td>
+                        <td>
+                            <div class="tooltip">
+                                <button onclick="myFunction()" onmouseout="outFunc()">
+                                    <span class="tooltiptext" id="myTooltip">Copy to clipboard</span>
+                                    Copy text
+                                </button>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
                         <td>4000056655665556</td>

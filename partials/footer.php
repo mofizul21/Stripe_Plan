@@ -1,9 +1,28 @@
 <script src="./js/bootstrap.js"></script>
 <script src="https://js.stripe.com/v3/"></script>
 <script>
+    // Initiate Clipboard
+    function myFunction() {
+        var copyText = document.getElementById("myInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copied: " + copyText.value;
+    }
+    function outFunc() {
+        var tooltip = document.getElementById("myTooltip");
+        tooltip.innerHTML = "Copy to clipboard";
+    }
+
+    // Change home button text after clicking
+    function change_text() {
+        document.getElementById('payBtn').innerHTML = "Processing...";
+    }
+
     // Hide FlashMessage after 3 seconds
     setInterval(function() {
-        document.getElementById('flashMessage').className +='hidden ';
+        document.getElementById('flashMessage').className += 'hidden ';
     }, 3000);
 
     // Create an instance of the Stripe object

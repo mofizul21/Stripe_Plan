@@ -1,5 +1,4 @@
 <?php
-session_start();
 // Include configuration file  
 require_once './config.php';
 ?>
@@ -14,6 +13,15 @@ require_once './config.php';
     <title>Stripe Subscriptions</title>
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.init({
+                appId: "14d3f395-b21b-4f23-a79b-bfc07a47ec59",
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -28,6 +36,8 @@ require_once './config.php';
                     <ul class="navbar-nav me-auto mb-2 mb-md-0">
                         <li class="nav-item"><a class="nav-link" href="https://stripeplans.test">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="content.php">Content</a></li>
+                        <li class="nav-item"><a class="nav-link" href="onesignal.php">OneSignal</a></li>
+                        <li class="nav-item"><a class="nav-link" href="firebaseinsert.php">Firebase</a></li>
                         <?php if (isset($_SESSION['logged_in'])) { ?>
                             <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                         <?php } else { ?>

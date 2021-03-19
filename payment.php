@@ -25,7 +25,7 @@ if (!empty($_POST['subscr_plan']) && !empty($_POST['stripeToken'])) {
     $planPrice = $planInfo['price'];
     $planInterval = $planInfo['interval'];
 
-    // Set API key 
+    // Set Stripe API key
     \Stripe\Stripe::setApiKey(DB::STRIPE_API_KEY);
 
     // Add customer to stripe 
@@ -34,9 +34,9 @@ if (!empty($_POST['subscr_plan']) && !empty($_POST['stripeToken'])) {
             'email' => $email,
             'source'  => $token
         ));
-        echo "<pre>";
-        print_r($customer);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($customer);
+        // echo "</pre>";        
     } catch (Exception $e) {
         $api_error = $e->getMessage();
     }
@@ -57,9 +57,9 @@ if (!empty($_POST['subscr_plan']) && !empty($_POST['stripeToken'])) {
                 "interval" => $planInterval,
                 "interval_count" => 1
             ));
-            echo "<pre>";
-            print_r($plan);
-            echo "</pre>";
+            // echo "<pre>";
+            // print_r($plan);
+            // echo "</pre>";
         } catch (Exception $e) {
             $api_error = $e->getMessage();
         }
@@ -69,18 +69,20 @@ if (!empty($_POST['subscr_plan']) && !empty($_POST['stripeToken'])) {
             try {
                 $subscription = \Stripe\Subscription::create(array(
                     "customer" => $customer->id,
-                    "items" => array(
+                    "items"     => array(
                         array(
                             "plan" => $plan->id,
                         ),
                     ),
+                    //'cancel_at' =>  $planInterval
                 ));
-                echo "<pre>";
-                print_r($subscription);
-                echo "</pre>";
+                // echo "<pre>";
+                // print_r($subscription);
+                // echo "</pre>";                
             } catch (Exception $e) {
                 $api_error = $e->getMessage();
             }
+            
 
             if (empty($api_error) && $subscription) {
                 // Retrieve subscription data 
@@ -250,7 +252,7 @@ if (!empty($_POST['subscr_plan']) && !empty($_POST['stripeToken'])) {
 
                     // redirect
                     window.setTimeout(function() {
-                        //window.location.href = 'content.php';
+                        window.location.href = 'content.php';
                     }, 10000);
                 </script>
             </div>

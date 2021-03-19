@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 // Subscription plans 
 // Minimum amount is $0.50 US 
 // Interval day, week, month or year 
@@ -26,14 +28,20 @@ $plans = array(
 );
 $currency = "USD";
 
+function printor($data){
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+}
+
 function message($type, $data){
     return "<div class='alert alert-{$type} ' id='flashMessage'>{$data}</div>";
 }
 
 class DB{
-    public const STRIPE_API_KEY = 'xxxxx';
+    public const STRIPE_API_KEY = 'sk_test_51Dwp06IuCuk7JoC7oHg5ItomM8CBnftcVR47qWz7BSJoJ6tYC9CItjtQaiXLQKjNzUya5seFFXrzwnBlUCd822AT00ZaRhK2qJ';
 
-    public const STRIPE_PUBLISHABLE_KEY = 'xxxxx';
+    public const STRIPE_PUBLISHABLE_KEY = 'pk_test_51Dwp06IuCuk7JoC76xL1Nmd7SxbCBjV1PtAE6sKGbDcidwdravDosXTYG1rhFYUghzpZUm8EATa8kOgQ5opIYsdS00XFfgJ7V4';
     
 
     private $connection;
